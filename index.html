@@ -1,464 +1,463 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KMSGD Jabodetabek</title>
-    
-    <!-- SEO & Meta Tags -->
-    <meta name="description" content="Website Resmi Keluarga Mahasiswa Sunan Gunung Djati (KMSGD) Jabodetabek.">
-    
+    <title>KMSGD Jabodetabek - Ciayumajakuning</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter & Roboto Slab (Mirip gaya portal berita formal) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@500;700;800&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome -->
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Tailwind Config -->
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        black: '#000000',
-                        dark: '#111111',
-                        darker: '#0a0a0a',
-                        bordergray: '#222222',
-                        gold: {
-                            DEFAULT: '#D4AF37',
-                            light: '#F3E5AB',
-                            dark: '#AA8822',
-                        }
-                    },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Roboto Slab', 'serif'],
+                    },
+                    colors: {
+                        // Tema Gold dan Hitam
+                        primary: '#D4AF37', // Gold
+                        primaryDark: '#B5952F', // Dark Gold
+                        dark: '#000000', // Solid Black
+                        darkBg: '#0a0a0a', // Sangat gelap untuk background
+                        card: '#111111', // Hitam sedikit terang untuk card
+                        cardHover: '#1a1a1a',
+                        light: '#F3F4F6',
                     }
                 }
             }
         }
     </script>
-
     <style>
-        body {
-            background-color: #000000;
-            color: #ffffff;
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        /* Efek Ticker Berita Berjalan */
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
+        ::-webkit-scrollbar-track {
+            background: #000000; 
         }
-        .ticker-move {
-            display: inline-block;
-            animation: ticker 25s linear infinite;
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37; 
+            border-radius: 4px;
         }
-        @keyframes ticker {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B5952F; 
         }
-        /* Garis Khas Section PB HMI */
-        .section-title {
-            position: relative;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-family: 'Roboto Slab', serif;
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
         }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #222222;
+
+        /* Hero Background with dark overlay */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
-        .section-title::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 2px;
+        
+        /* Gradient text utility */
+        .text-gradient {
+            background: linear-gradient(to right, #D4AF37, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Gold outline button */
+        .btn-outline-gold {
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-gold:hover {
             background-color: #D4AF37;
-            z-index: 1;
-        }
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;  
-            overflow: hidden;
+            color: #000000;
         }
     </style>
 </head>
-<body class="antialiased font-sans">
+<body class="bg-darkBg text-gray-300 font-sans antialiased">
 
-    <!-- Top Bar (Tanggal & Sosial Media) -->
-    <div class="bg-darker border-b border-bordergray hidden md:block">
-        <div class="container mx-auto px-4 md:px-8 flex justify-between items-center py-2 text-xs text-gray-400">
-            <div>
-                <i class="far fa-calendar-alt text-gold mr-2"></i> Jumat, 22 Mei 2026
+    <!-- Top Bar (Ciri khas website formal/organisasi) -->
+    <div class="bg-primary text-dark py-2 hidden md:block border-b border-primaryDark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-sm font-semibold">
+            <div class="flex items-center gap-4">
+                <span><i class="fas fa-map-marker-alt mr-1"></i> Ciputat Timur, Tangerang Selatan</span>
+                <span><i class="fas fa-envelope mr-1"></i> kmsgd.jabodetabek@gmail.com</span>
             </div>
-            <div class="flex space-x-4">
-                <a href="#" class="hover:text-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="hover:text-gold transition-colors"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="hover:text-gold transition-colors"><i class="fab fa-youtube"></i></a>
+            <div class="flex items-center gap-4">
+                <a href="https://www.instagram.com/kmsgd_jabodetabek/" target="_blank" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-facebook"></i></a>
             </div>
         </div>
     </div>
 
-    <!-- Main Header (Logo & Navigasi) -->
-    <header class="bg-black sticky top-0 z-50 border-b border-bordergray">
-        <div class="container mx-auto px-4 md:px-8">
+    <!-- Navigation -->
+    <nav class="sticky top-0 w-full z-50 bg-dark/95 backdrop-blur-md border-b border-primary/20 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <a href="#" class="flex items-center gap-3">
-                    <img src="https://uploads.onecompiler.io/44q2crubr/44q2cqza9/Gemini_Generated_Image_epdmmmepdmmmepdm-removebg-preview.png" alt="Logo KMSGD" class="h-12 w-auto bg-white p-1 rounded-sm" onerror="this.src='https://placehold.co/100x100/D4AF37/000000?text=KMSGD'">
-                    <div class="flex flex-col">
-                        <span class="text-2xl font-serif font-bold text-white tracking-wide leading-none">KMSGD</span>
-                        <span class="text-[10px] font-bold text-gold tracking-widest uppercase mt-1">Jabodetabek</span>
-                    </div>
-                </a>
-
-                <!-- Desktop Navigation -->
-                <nav class="hidden lg:flex items-center space-x-8">
-                    <a href="#beranda" class="text-sm font-bold text-gold uppercase tracking-wider">Beranda</a>
-                    <a href="#tentang" class="text-sm font-bold text-white hover:text-gold transition-colors uppercase tracking-wider">Profil</a>
-                    <a href="#struktur" class="text-sm font-bold text-white hover:text-gold transition-colors uppercase tracking-wider">Pengurus</a>
-                    <a href="#berita" class="text-sm font-bold text-white hover:text-gold transition-colors uppercase tracking-wider">Berita</a>
-                    <a href="#opini" class="text-sm font-bold text-white hover:text-gold transition-colors uppercase tracking-wider">Opini</a>
-                    <button class="text-white hover:text-gold"><i class="fas fa-search"></i></button>
-                </nav>
-
-                <!-- Mobile Menu Toggle -->
-                <button id="mobile-menu-btn" class="lg:hidden text-white text-xl">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-darker border-t border-bordergray px-4 py-4 space-y-4">
-            <a href="#beranda" class="block text-sm font-bold text-gold uppercase pb-2 border-b border-bordergray">Beranda</a>
-            <a href="#tentang" class="block text-sm font-bold text-white hover:text-gold uppercase pb-2 border-b border-bordergray">Profil</a>
-            <a href="#struktur" class="block text-sm font-bold text-white hover:text-gold uppercase pb-2 border-b border-bordergray">Pengurus</a>
-            <a href="#berita" class="block text-sm font-bold text-white hover:text-gold uppercase pb-2 border-b border-bordergray">Berita</a>
-        </div>
-    </header>
-
-    <!-- Breaking News Ticker -->
-    <div class="bg-dark border-b border-bordergray">
-        <div class="container mx-auto px-4 md:px-8 flex items-center h-10">
-            <div class="bg-gold text-black font-bold text-xs uppercase px-4 py-1 h-full flex items-center whitespace-nowrap">
-                Kilas Berita <i class="fas fa-bolt ml-2"></i>
-            </div>
-            <div class="ticker-wrap flex-1 text-sm text-gray-300 ml-4 overflow-hidden relative h-full flex items-center">
-                <div class="ticker-move">
-                    <span class="mr-10"><span class="text-gold font-semibold">Terkini:</span> Rapat Kerja Pengurus KMSGD Jabodetabek Resmi Dibuka di Bandung.</span>
-                    <span class="mr-10"><span class="text-gold font-semibold">Informasi:</span> Pendaftaran Kaderisasi Tahap 1 Akan Segera Dilaksanakan Bulan Depan.</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Content Area -->
-    <div class="container mx-auto px-4 md:px-8 py-8" id="beranda">
-        <!-- HERO GRID (Gaya PB HMI - 1 Besar Kiri, 2 Kecil Kanan) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-1 lg:gap-4 mb-12">
-            
-            <!-- Hero Kiri (Artikel Utama) -->
-            <div class="lg:col-span-8 relative group overflow-hidden h-[400px] lg:h-[500px]">
-                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Headline Utama" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 w-full p-6 lg:p-8">
-                    <span class="bg-gold text-black text-[10px] font-bold uppercase tracking-wider px-2 py-1 mb-3 inline-block">Berita Utama</span>
-                    <h2 class="text-2xl lg:text-4xl font-serif font-bold text-white mb-3 leading-snug hover:text-gold transition-colors cursor-pointer">
-                        Pengukuhan Pengurus KMSGD Jabodetabek Periode 2026-2027: Meneguhkan Khitah Perjuangan
-                    </h2>
-                    <div class="flex items-center text-xs text-gray-300 gap-4">
-                        <span><i class="far fa-user text-gold mr-1"></i> Redaksi KMSGD</span>
-                        <span><i class="far fa-clock text-gold mr-1"></i> 22 Mei 2026</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hero Kanan (2 Artikel Sub-Utama) -->
-            <div class="lg:col-span-4 flex flex-col gap-1 lg:gap-4">
-                
-                <div class="relative group overflow-hidden h-[200px] lg:h-[242px]">
-                    <img src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sub Headline 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 w-full p-5">
-                        <span class="text-gold text-[10px] font-bold uppercase tracking-wider mb-2 inline-block">Organisasi</span>
-                        <h3 class="text-lg font-serif font-bold text-white leading-tight hover:text-gold transition-colors cursor-pointer">
-                            Silaturahmi Akbar Alumni: Menyambung Sanad Perjuangan di Tanah Rantau
-                        </h3>
-                    </div>
-                </div>
-
-                <div class="relative group overflow-hidden h-[200px] lg:h-[242px]">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sub Headline 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 w-full p-5">
-                        <span class="text-gold text-[10px] font-bold uppercase tracking-wider mb-2 inline-block">Opini</span>
-                        <h3 class="text-lg font-serif font-bold text-white leading-tight hover:text-gold transition-colors cursor-pointer">
-                            Relevansi Modul Peta KMSGD dalam Menjawab Tantangan Disrupsi Informasi
-                        </h3>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- CONTENT GRID (Kiri: Berita Terbaru, Kanan: Sidebar/Terpopuler) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8" id="berita">
-            
-            <!-- Kolom Kiri (Berita Utama List) -->
-            <div class="lg:col-span-8">
-                <h3 class="section-title text-2xl font-bold text-white uppercase tracking-wide">Berita <span class="text-gold">Terkini</span></h3>
-                
-                <div class="flex flex-col gap-6">
-                    <!-- Artikel Item 1 -->
-                    <div class="flex flex-col md:flex-row gap-4 border-b border-bordergray pb-6 group">
-                        <div class="w-full md:w-1/3 h-48 md:h-32 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="News Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex items-center gap-3">
+                        <div class="w-10 h-10 border-2 border-primary rounded-full flex items-center justify-center text-primary font-bold text-xl shadow-[0_0_10px_rgba(212,175,55,0.3)]">
+                            K
                         </div>
-                        <div class="w-full md:w-2/3 flex flex-col justify-center">
-                            <span class="text-gold text-[10px] font-bold uppercase tracking-wider mb-1">Pendidikan</span>
-                            <h4 class="text-xl font-serif font-bold text-white hover:text-gold transition-colors cursor-pointer mb-2 line-clamp-2">
-                                Kajian Rutin Bidang Keilmuan: Membedah Pemikiran Intelektual Muslim Kontemporer
-                            </h4>
-                            <p class="text-gray-400 text-sm line-clamp-2 mb-2">Kegiatan kajian rutin ini dilaksanakan sebagai bentuk pengejawantahan nilai-nilai akademis yang tertuang di dalam Modul Peta KMSGD...</p>
-                            <span class="text-xs text-gray-500"><i class="far fa-clock mr-1"></i> 20 Mei 2026</span>
-                        </div>
-                    </div>
-
-                    <!-- Artikel Item 2 -->
-                    <div class="flex flex-col md:flex-row gap-4 border-b border-bordergray pb-6 group">
-                        <div class="w-full md:w-1/3 h-48 md:h-32 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="News Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="w-full md:w-2/3 flex flex-col justify-center">
-                            <span class="text-gold text-[10px] font-bold uppercase tracking-wider mb-1">Sosial</span>
-                            <h4 class="text-xl font-serif font-bold text-white hover:text-gold transition-colors cursor-pointer mb-2 line-clamp-2">
-                                Aksi Solidaritas KMSGD Jabodetabek Bantu Korban Bencana di Daerah Rawan
-                            </h4>
-                            <p class="text-gray-400 text-sm line-clamp-2 mb-2">Sebagai bentuk pengabdian kepada masyarakat, KMSGD Jabodetabek menerjunkan relawan dan bantuan logistik ke lokasi bencana alam...</p>
-                            <span class="text-xs text-gray-500"><i class="far fa-clock mr-1"></i> 18 Mei 2026</span>
-                        </div>
-                    </div>
-
-                    <!-- Artikel Item 3 -->
-                    <div class="flex flex-col md:flex-row gap-4 border-b border-bordergray pb-6 group">
-                        <div class="w-full md:w-1/3 h-48 md:h-32 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="News Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="w-full md:w-2/3 flex flex-col justify-center">
-                            <span class="text-gold text-[10px] font-bold uppercase tracking-wider mb-1">Kaderisasi</span>
-                            <h4 class="text-xl font-serif font-bold text-white hover:text-gold transition-colors cursor-pointer mb-2 line-clamp-2">
-                                Rapat Koordinasi Bidang Pembinaan Aparatur: Menajamkan Silabus Organisasi
-                            </h4>
-                            <p class="text-gray-400 text-sm line-clamp-2 mb-2">Evaluasi kurikulum kaderisasi KMSGD dilakukan secara berkala demi menyesuaikan dengan kebutuhan kualitas sumber daya manusia di era modern...</p>
-                            <span class="text-xs text-gray-500"><i class="far fa-clock mr-1"></i> 15 Mei 2026</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-8">
-                    <button class="bg-bordergray text-white hover:bg-gold hover:text-black font-bold text-sm px-6 py-2 transition-colors">INDEKS BERITA</button>
-                </div>
-            </div>
-
-            <!-- Kolom Kanan (Sidebar PB HMI Style) -->
-            <div class="lg:col-span-4">
-                <!-- Terpopuler -->
-                <div class="mb-10">
-                    <h3 class="section-title text-xl font-bold text-white uppercase tracking-wide">Terpopuler</h3>
-                    <ul class="flex flex-col gap-4">
-                        <li class="flex gap-4 items-center group cursor-pointer border-b border-bordergray pb-4">
-                            <span class="text-3xl font-serif font-bold text-bordergray group-hover:text-gold transition-colors">1</span>
-                            <div>
-                                <h4 class="text-sm font-bold text-white group-hover:text-gold transition-colors leading-snug">Memahami Sejarah dan Modul Peta KMSGD Secara Komprehensif</h4>
-                                <span class="text-[10px] text-gray-500 mt-1 block">Dibaca 1.2K kali</span>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 items-center group cursor-pointer border-b border-bordergray pb-4">
-                            <span class="text-3xl font-serif font-bold text-bordergray group-hover:text-gold transition-colors">2</span>
-                            <div>
-                                <h4 class="text-sm font-bold text-white group-hover:text-gold transition-colors leading-snug">Daftar Susunan Kepengurusan KMSGD Jabodetabek Periode Terbaru</h4>
-                                <span class="text-[10px] text-gray-500 mt-1 block">Dibaca 980 kali</span>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 items-center group cursor-pointer border-b border-bordergray pb-4">
-                            <span class="text-3xl font-serif font-bold text-bordergray group-hover:text-gold transition-colors">3</span>
-                            <div>
-                                <h4 class="text-sm font-bold text-white group-hover:text-gold transition-colors leading-snug">Opini: Menjaga Independensi Organisasi Ekstra Kampus</h4>
-                                <span class="text-[10px] text-gray-500 mt-1 block">Dibaca 856 kali</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Banner/Announcement space (PB HMI sering pakai ini) -->
-                <div class="bg-darker border border-gold p-6 text-center mb-10 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-gold opacity-10 rounded-full blur-xl"></div>
-                    <i class="fas fa-bullhorn text-3xl text-gold mb-3"></i>
-                    <h4 class="text-white font-bold mb-2">Pengumuman Organisasi</h4>
-                    <p class="text-xs text-gray-400 mb-4">Pendaftaran Anggota Baru KMSGD Jabodetabek akan segera dibuka. Pantau terus linimasa kami.</p>
-                    <button class="border border-gold text-gold hover:bg-gold hover:text-black px-4 py-2 text-xs font-bold transition-colors">BACA SELENGKAPNYA</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- SEJARAH & MODUL PETA (Format Artikel Resmi Khusus) -->
-    <div class="bg-darker py-16 border-t border-bordergray" id="tentang">
-        <div class="container mx-auto px-4 md:px-8 max-w-4xl">
-            <div class="text-center mb-10">
-                <span class="text-gold text-xs font-bold tracking-[0.2em] uppercase block mb-2">Profil Kelembagaan</span>
-                <h2 class="text-3xl lg:text-4xl font-serif font-bold text-white">Sejarah Pendirian dan Modul Peta</h2>
-                <div class="w-16 h-1 bg-gold mx-auto mt-4"></div>
-            </div>
-
-            <div class="prose prose-invert max-w-none text-gray-300 text-justify text-sm md:text-base leading-relaxed font-sans">
-                <p>
-                    <span class="text-4xl font-serif float-left mr-3 mt-1 text-gold">K</span>eluarga Mahasiswa Sunan Gunung Djati (KMSGD) Jabodetabek bermula dari kesadaran kolektif para mahasiswa rantau yang berasal dari kawasan Jakarta, Bogor, Depok, Tangerang, dan Bekasi (Jabodetabek) yang tengah menempuh pendidikan tinggi di Universitas Islam Negeri (UIN) Sunan Gunung Djati Bandung.
-                </p>
-                <p>
-                    Pada fase awal pembentukannya, KMSGD diinisiasi sebagai wadah paguyuban primordial yang bertujuan untuk mempererat tali silaturahmi antar sesama mahasiswa perantauan. Namun, seiring dengan dinamika intelektual dan tuntutan zaman, para pendiri menyadari bahwa ikatan kedaerahan semata tidaklah cukup untuk menjawab tantangan umat dan bangsa.
-                </p>
-                <p>
-                    Oleh karena itu, KMSGD bertransformasi menjadi organisasi pergerakan dan kaderisasi yang sistematis. Transformasi ini ditandai dengan perumusan landasan konstitusional dan operasional yang kokoh, salah satunya terejawantahkan dalam <strong>Modul Peta KMSGD</strong>. Organisasi ini didirikan tidak hanya sekadar menjadi tempat berkumpul, melainkan sebagai kawah candradimuka untuk mencetak insan akademis yang kritis, berintegritas, dan berpegang teguh pada nilai-nilai keislaman serta keindonesiaan.
-                </p>
-
-                <div class="my-8 p-6 border-l-4 border-gold bg-black">
-                    <h4 class="text-gold font-bold uppercase tracking-wider mb-2 text-sm">Kedudukan Modul Peta</h4>
-                    <p class="m-0 text-gray-400">
-                        Berdasarkan ketetapan organisasi, <strong>Modul Peta KMSGD</strong> berkedudukan sebagai Pedoman Tata Laksana dan Garis Besar Haluan Organisasi. Modul ini merupakan dokumen fundamental yang mengatur secara komprehensif mengenai pola rekrutmen, tahapan kaderisasi, struktur hierarki, hingga orientasi pergerakan pengurus di setiap tingkatan demi menjaga kemurnian khitah perjuangan KMSGD Jabodetabek.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- STRUKTUR PENGURUS (Gaya List Bersih ala Berita) -->
-    <div class="container mx-auto px-4 md:px-8 py-16 border-t border-bordergray" id="struktur">
-        <h3 class="section-title text-2xl font-bold text-white uppercase tracking-wide mb-8">Struktur <span class="text-gold">Pengurus</span></h3>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-sm">
-            
-            <!-- Penasihat -->
-            <div class="bg-dark p-6 border border-bordergray hover:border-gold transition-colors">
-                <h4 class="text-gold font-bold uppercase tracking-wider mb-4 border-b border-bordergray pb-2">Dewan Penasihat & Pembina</h4>
-                <ul class="space-y-2 text-gray-300">
-                    <li><i class="fas fa-circle text-[8px] text-gold mr-2"></i> Alumni Senior KMSGD</li>
-                    <li><i class="fas fa-circle text-[8px] text-gold mr-2"></i> Tokoh Masyarakat Jabodetabek</li>
-                </ul>
-            </div>
-
-            <!-- Inti -->
-            <div class="bg-dark p-6 border border-bordergray hover:border-gold transition-colors">
-                <h4 class="text-gold font-bold uppercase tracking-wider mb-4 border-b border-bordergray pb-2">Pengurus Inti</h4>
-                <ul class="space-y-3 text-gray-300">
-                    <li>
-                        <span class="block text-[10px] text-gray-500 uppercase font-bold">Ketua Umum</span>
-                        <span class="font-bold text-white">Nama Ketua Umum</span>
-                    </li>
-                    <li>
-                        <span class="block text-[10px] text-gray-500 uppercase font-bold">Sekretaris Umum</span>
-                        <span class="font-bold text-white">Nama Sekretaris Umum</span>
-                    </li>
-                    <li>
-                        <span class="block text-[10px] text-gray-500 uppercase font-bold">Bendahara Umum</span>
-                        <span class="font-bold text-white">Nama Bendahara Umum</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Bidang -->
-            <div class="bg-dark p-6 border border-bordergray hover:border-gold transition-colors">
-                <h4 class="text-gold font-bold uppercase tracking-wider mb-4 border-b border-bordergray pb-2">Jajaran Ketua Bidang</h4>
-                <ul class="space-y-3 text-gray-300">
-                    <li>
-                        <span class="block text-[10px] text-gray-500 uppercase font-bold">Kabid Pembinaan Aparatur (PA)</span>
-                        <span class="font-bold text-white">Nama Kabid PA</span>
-                    </li>
-                    <li>
-                        <span class="block text-[10px] text-gray-500 uppercase font-bold">Kabid Perguruan Tinggi & Kepemudaan</span>
-                        <span class="font-bold text-white">Nama Kabid PTKP</span>
-                    </li>
-                    <li>
-                        <span class="block text-[10px] text-gray-500 uppercase font-bold">Kabid Hubungan Masyarakat</span>
-                        <span class="font-bold text-white">Nama Kabid Humas</span>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Footer PB HMI Style -->
-    <footer class="bg-darker border-t-4 border-gold pt-12 pb-6">
-        <div class="container mx-auto px-4 md:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 border-b border-bordergray pb-8">
-                <!-- Kolom 1 -->
-                <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="images.png" alt="Logo" class="h-10 w-auto bg-white p-1 rounded-sm">
                         <div class="flex flex-col">
-                            <span class="text-xl font-serif font-bold text-white leading-none">KMSGD</span>
+                            <span class="font-bold text-xl text-white leading-tight tracking-wider">KMSGD</span>
+                            <span class="text-xs text-primary font-semibold tracking-widest">JABODETABEK</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#beranda" class="text-gray-300 hover:text-primary font-medium transition duration-200">Beranda</a>
+                    <a href="#tentang" class="text-gray-300 hover:text-primary font-medium transition duration-200">Profil</a>
+                    <a href="#berita" class="text-gray-300 hover:text-primary font-medium transition duration-200">Berita & Kegiatan</a>
+                    <a href="#pengurus" class="text-gray-300 hover:text-primary font-medium transition duration-200">Pengurus</a>
+                    <a href="https://www.instagram.com/kmsgd_jabodetabek/" target="_blank" class="bg-primary hover:bg-primaryDark text-dark px-5 py-2 rounded font-bold transition duration-300 shadow-md flex items-center gap-2">
+                        BERGABUNG
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-white focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark border-t border-primary/20 absolute w-full shadow-2xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#beranda" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-card">Beranda</a>
+                <a href="#tentang" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-card">Profil</a>
+                <a href="#berita" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-card">Berita & Kegiatan</a>
+                <a href="#pengurus" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-card">Pengurus</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero-bg min-h-[90vh] flex items-center relative border-b border-primary/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="text-center space-y-6 max-w-4xl mx-auto">
+                <div class="flex justify-center mb-6">
+                    <i class="fas fa-star text-primary text-2xl mx-1"></i>
+                    <i class="fas fa-star text-primary text-2xl mx-1"></i>
+                    <i class="fas fa-star text-primary text-2xl mx-1"></i>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-tight uppercase tracking-wide">
+                    Satu Barisan <br/>
+                    <span class="text-gradient">Ciayumajakuning</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light">
+                    Keluarga Mahasiswa Sunan Gunung Djati (KMSGD) Jabodetabek. Membangun sinergi mahasiswa asal Ciayumajakuning, menjaga tradisi leluhur, dan berkontribusi untuk negeri sejak 1964.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+                    <a href="#tentang" class="bg-primary hover:bg-primaryDark text-dark px-8 py-3 font-bold text-lg transition duration-300 shadow-[0_0_15px_rgba(212,175,55,0.4)] uppercase tracking-wider">
+                        Profil Organisasi
+                    </a>
+                    <a href="#berita" class="btn-outline-gold px-8 py-3 font-bold text-lg uppercase tracking-wider">
+                        Kabar Terbaru
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative bottom geometric pattern -->
+        <div class="absolute bottom-0 w-full h-2 bg-gradient-to-r from-dark via-primary to-dark z-20"></div>
+    </section>
+
+    <!-- Tentang Kami Section -->
+    <section id="tentang" class="py-20 bg-darkBg relative border-b border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white uppercase tracking-wider mb-2">Profil <span class="text-primary">KMSGD</span></h2>
+                <div class="h-1 w-20 bg-primary mx-auto mb-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Image Side -->
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-primary opacity-20 group-hover:opacity-40 transition duration-500 blur-sm"></div>
+                    <div class="border border-primary/30 p-2 relative bg-dark">
+                        <img src="https://images.unsplash.com/photo-1529156069898-49953eb1b5ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mahasiswa Berdiskusi" class="w-full h-auto object-cover aspect-[4/3] grayscale hover:grayscale-0 transition duration-500">
+                    </div>
+                </div>
+
+                <!-- Text Side -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-primary border-l-4 border-primary pl-4 uppercase">Sejarah & Perjuangan di Tanah Rantau</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed text-justify">
+                        Keluarga Mahasiswa Sunan Gunung Djati (KMSGD) Jabodetabek didirikan pada tahun 1964 oleh tokoh-tokoh besar seperti Bapak Umar Wirahadikusumah dan H. Suparno. Organisasi ini hadir sebagai wadah silaturahmi dan pergerakan bagi mahasiswa asal Cirebon, Indramayu, Majalengka, dan Kuningan (Ciayumajakuning).
+                    </p>
+                    <p class="text-gray-400 leading-relaxed text-justify">
+                        Berbasis di Asrama KMSGD Ciputat, kami membangun kesadaran kritis, merawat nilai-nilai keluhuran budaya lokal, serta mencetak kader intelektual yang unggul dan memiliki kepekaan sosial terhadap pembangunan daerah asal dan nasional.
+                    </p>
+                    
+                    <div class="pt-6 grid grid-cols-2 gap-6">
+                        <div class="bg-card border border-primary/20 p-4 text-center">
+                            <h4 class="text-3xl font-bold text-primary mb-1">1964</h4>
+                            <p class="text-xs text-gray-400 uppercase tracking-wider">Tahun Berdiri</p>
+                        </div>
+                        <div class="bg-card border border-primary/20 p-4 text-center">
+                            <h4 class="text-3xl font-bold text-primary mb-1">4</h4>
+                            <p class="text-xs text-gray-400 uppercase tracking-wider">Kabupaten/Kota Asal</p>
                         </div>
                     </div>
-                    <p class="text-gray-400 text-sm mb-4">
-                        Keluarga Mahasiswa Sunan Gunung Djati (KMSGD) Jabodetabek. Organisasi ekstra kampus independen yang berfokus pada pembinaan kader intelektual Muslim.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Berita & Kegiatan Section (Meniru gaya Portal Berita Organisasi) -->
+    <section id="berita" class="py-20 bg-dark border-b border-primary/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12 border-b border-gray-800 pb-4">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white uppercase tracking-wider">Berita <span class="text-primary">& Kegiatan</span></h2>
+                </div>
+                <a href="https://www.instagram.com/kmsgd_jabodetabek/" target="_blank" class="hidden md:flex text-primary hover:text-white font-semibold items-center gap-2 transition">
+                    Lihat Instagram <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- News Card 1 -->
+                <div class="bg-card border border-gray-800 hover:border-primary/50 transition duration-300 group">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pekan Ta'aruf KMSGD" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 grayscale group-hover:grayscale-0">
+                        <div class="absolute top-4 left-4 bg-primary text-dark font-bold text-xs px-3 py-1 uppercase tracking-wider">
+                            Kaderisasi
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs text-primary mb-2 font-semibold"><i class="far fa-calendar-alt"></i> Agenda Rutin Tahunan</div>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition leading-tight">Pekan Ta'aruf (PETA): Menyambut Mahasiswa Baru Ciayumajakuning</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                            KMSGD Jabodetabek kembali menggelar Pekan Ta'aruf sebagai gerbang awal kaderisasi. Ratusan mahasiswa baru berkumpul untuk memperkuat barisan dan menyatukan visi di tanah rantau.
+                        </p>
+                        <a href="https://www.instagram.com/kmsgd_jabodetabek/" target="_blank" class="text-primary text-sm font-bold uppercase tracking-wider hover:text-white transition">Lihat di Instagram ></a>
+                    </div>
+                </div>
+
+                <!-- News Card 2 -->
+                <div class="bg-card border border-gray-800 hover:border-primary/50 transition duration-300 group">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Festival Budaya Nusantara" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 grayscale group-hover:grayscale-0">
+                        <div class="absolute top-4 left-4 bg-primary text-dark font-bold text-xs px-3 py-1 uppercase tracking-wider">
+                            Seni Budaya
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs text-primary mb-2 font-semibold"><i class="far fa-calendar-alt"></i> Pagelaran Budaya</div>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition leading-tight">Festival Budaya Nusantara: Melestarikan Kesenian Daerah</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                            KMSGD sukses menyelenggarakan Festival Budaya Nusantara di Anjungan Jawa Barat TMII, menampilkan puluhan kesenian daerah guna meneguhkan jati diri bangsa di tengah era modernisasi.
+                        </p>
+                        <a href="https://www.instagram.com/kmsgd_jabodetabek/" target="_blank" class="text-primary text-sm font-bold uppercase tracking-wider hover:text-white transition">Lihat di Instagram ></a>
+                    </div>
+                </div>
+
+                <!-- News Card 3 -->
+                <div class="bg-card border border-gray-800 hover:border-primary/50 transition duration-300 group">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://images.unsplash.com/photo-1529070538774-1843cb1665e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kongres KMSGD" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 grayscale group-hover:grayscale-0">
+                        <div class="absolute top-4 left-4 bg-primary text-dark font-bold text-xs px-3 py-1 uppercase tracking-wider">
+                            Organisasi
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs text-primary mb-2 font-semibold"><i class="far fa-calendar-alt"></i> Musyawarah Besar</div>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition leading-tight">Kongres KMSGD Jabodetabek: Estafet Kepemimpinan Organisasi</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                            Bertempat di Aula Asrama KMSGD, musyawarah tertinggi organisasi ini menetapkan arah gerak KMSGD ke depan sekaligus melantik pengurus baru yang akan mengemban amanah periode mendatang.
+                        </p>
+                        <a href="https://www.instagram.com/kmsgd_jabodetabek/" target="_blank" class="text-primary text-sm font-bold uppercase tracking-wider hover:text-white transition">Lihat di Instagram ></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center md:hidden">
+                <a href="https://www.instagram.com/kmsgd_jabodetabek/" target="_blank" class="btn-outline-gold px-6 py-2 text-sm uppercase tracking-wider inline-block">Kunjungi Instagram Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pengurus Section -->
+    <section id="pengurus" class="py-20 bg-darkBg relative">
+        <!-- Background element -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white uppercase tracking-wider mb-2">Struktur <span class="text-primary">Kepengurusan</span></h2>
+                <div class="h-1 w-20 bg-primary mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-card border border-gray-800 p-6 text-center hover:border-primary transition duration-300 group">
+                    <div class="w-24 h-24 mx-auto mb-4 p-1 border-2 border-primary rounded-full">
+                        <img src="https://ui-avatars.com/api/?name=Ketua+Umum&background=D4AF37&color=000&size=150" alt="Ketua Umum" class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition duration-300">
+                    </div>
+                    <h4 class="text-lg font-bold text-white uppercase">Nama Ketua</h4>
+                    <p class="text-primary font-bold text-xs tracking-widest uppercase mt-1 mb-3">Ketua Umum</p>
+                    <div class="w-10 h-[1px] bg-gray-700 mx-auto mb-3"></div>
+                    <p class="text-xs text-gray-500">Universitas ...</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-card border border-gray-800 p-6 text-center hover:border-primary transition duration-300 group">
+                    <div class="w-24 h-24 mx-auto mb-4 p-1 border-2 border-primary rounded-full">
+                        <img src="https://ui-avatars.com/api/?name=Wakil+Ketua&background=D4AF37&color=000&size=150" alt="Wakil Ketua" class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition duration-300">
+                    </div>
+                    <h4 class="text-lg font-bold text-white uppercase">Nama Wakil</h4>
+                    <p class="text-primary font-bold text-xs tracking-widest uppercase mt-1 mb-3">Wakil Ketua</p>
+                    <div class="w-10 h-[1px] bg-gray-700 mx-auto mb-3"></div>
+                    <p class="text-xs text-gray-500">Universitas ...</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-card border border-gray-800 p-6 text-center hover:border-primary transition duration-300 group">
+                    <div class="w-24 h-24 mx-auto mb-4 p-1 border-2 border-primary rounded-full">
+                        <img src="https://ui-avatars.com/api/?name=Sekretaris&background=333&color=D4AF37&size=150" alt="Sekretaris" class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition duration-300">
+                    </div>
+                    <h4 class="text-lg font-bold text-white uppercase">Nama Sekre</h4>
+                    <p class="text-gray-400 font-bold text-xs tracking-widest uppercase mt-1 mb-3">Sekretaris Umum</p>
+                    <div class="w-10 h-[1px] bg-gray-700 mx-auto mb-3"></div>
+                    <p class="text-xs text-gray-500">Universitas ...</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-card border border-gray-800 p-6 text-center hover:border-primary transition duration-300 group">
+                    <div class="w-24 h-24 mx-auto mb-4 p-1 border-2 border-primary rounded-full">
+                        <img src="https://ui-avatars.com/api/?name=Bendahara&background=333&color=D4AF37&size=150" alt="Bendahara" class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition duration-300">
+                    </div>
+                    <h4 class="text-lg font-bold text-white uppercase">Nama Bendum</h4>
+                    <p class="text-gray-400 font-bold text-xs tracking-widest uppercase mt-1 mb-3">Bendahara Umum</p>
+                    <div class="w-10 h-[1px] bg-gray-700 mx-auto mb-3"></div>
+                    <p class="text-xs text-gray-500">Universitas ...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Call to Action -->
+    <section class="border-y border-primary/40 bg-dark relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20" style="background-image: repeating-linear-gradient(45deg, #D4AF37 0, #D4AF37 1px, transparent 0, transparent 50%); background-size: 10px 10px;"></div>
+        <div class="max-w-7xl mx-auto px-4 py-12 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <h3 class="text-2xl md:text-3xl font-bold text-white uppercase tracking-wide">Mari Bergabung Dalam Barisan</h3>
+                <p class="text-primary mt-2">Solidaritas tanpa batas mahasiswa Ciayumajakuning di Jabodetabek.</p>
+            </div>
+            <a href="https://www.instagram.com/kmsgd_jabodetabek/" target="_blank" class="bg-primary hover:bg-white text-dark px-8 py-3 font-bold uppercase tracking-wider transition duration-300 whitespace-nowrap">
+                Hubungi Kami
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontak" class="bg-darkBg text-gray-400 pt-16 pb-8 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <!-- Branding -->
+                <div class="col-span-1 md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 border-2 border-primary flex items-center justify-center text-primary font-bold text-2xl">
+                            K
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-2xl text-white leading-tight">KMSGD</span>
+                            <span class="text-xs text-primary font-bold tracking-widest">JABODETABEK</span>
+                        </div>
+                    </div>
+                    <p class="text-sm leading-relaxed max-w-md">
+                        Organisasi kekeluargaan dan pergerakan mahasiswa asal Cirebon, Indramayu, Majalengka, dan Kuningan yang menempuh studi di wilayah Jakarta, Bogor, Depok, Tangerang, dan Bekasi.
                     </p>
                 </div>
-                
-                <!-- Kolom 2 -->
+
+                <!-- Quick Links -->
                 <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider mb-4">Redaksi & Sekretariat</h4>
-                    <ul class="text-sm text-gray-400 space-y-2">
-                        <li><i class="fas fa-map-marker-alt text-gold w-5"></i> Jl. Sekretariat KMSGD, Bandung, Jawa Barat</li>
-                        <li><i class="fas fa-envelope text-gold w-5"></i> redaksi@kmsgd.or.id</li>
-                        <li><i class="fas fa-phone text-gold w-5"></i> +62 812-XXXX-XXXX</li>
+                    <h4 class="text-white font-bold text-lg mb-6 uppercase tracking-wider border-b border-primary inline-block pb-1">Tautan Cepat</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#beranda" class="hover:text-primary transition flex items-center gap-2"><i class="fas fa-angle-right text-xs text-primary"></i> Beranda</a></li>
+                        <li><a href="#tentang" class="hover:text-primary transition flex items-center gap-2"><i class="fas fa-angle-right text-xs text-primary"></i> Profil</a></li>
+                        <li><a href="#berita" class="hover:text-primary transition flex items-center gap-2"><i class="fas fa-angle-right text-xs text-primary"></i> Berita & Kegiatan</a></li>
+                        <li><a href="#pengurus" class="hover:text-primary transition flex items-center gap-2"><i class="fas fa-angle-right text-xs text-primary"></i> Pengurus</a></li>
                     </ul>
                 </div>
 
-                <!-- Kolom 3 -->
+                <!-- Contact -->
                 <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider mb-4">Kanal Informasi</h4>
-                    <ul class="text-sm text-gray-400 space-y-2">
-                        <li><a href="#" class="hover:text-gold transition-colors">Berita Utama</a></li>
-                        <li><a href="#" class="hover:text-gold transition-colors">Opini Kader</a></li>
-                        <li><a href="#" class="hover:text-gold transition-colors">Galeri Kegiatan</a></li>
-                        <li><a href="#" class="hover:text-gold transition-colors">Pedoman Organisasi</a></li>
+                    <h4 class="text-white font-bold text-lg mb-6 uppercase tracking-wider border-b border-primary inline-block pb-1">Kontak</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt mt-1 text-primary"></i>
+                            <span class="text-sm">Asrama/Sekretariat KMSGD<br/>Jl. Ir. H. Djuanda Gg. Swadaya No. 79<br/>Rt. 04/008 Pisangan, Ciputat Timur<br/>Tangerang Selatan 15419</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-primary"></i>
+                            <span class="text-sm">kmsgd.jabodetabek@gmail.com</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fab fa-instagram text-primary text-lg"></i>
+                            <a href="https://www.instagram.com/kmsgd_jabodetabek/" target="_blank" class="text-sm hover:text-white transition">@kmsgd_jabodetabek</a>
+                        </li>
                     </ul>
                 </div>
             </div>
             
-            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-                <p>&copy; 2026 KMSGD Jabodetabek. Hak Cipta Dilindungi Undang-Undang.</p>
-                <div class="flex space-x-4 mt-2 md:mt-0">
-                    <a href="#" class="hover:text-gold">Pedoman Media Siber</a>
-                    <a href="#" class="hover:text-gold">Kebijakan Privasi</a>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-500">
+                    &copy; <span id="year"></span> KMSGD Jabodetabek. Hak Cipta Dilindungi.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 border border-gray-700 flex items-center justify-center hover:border-primary hover:text-primary transition text-gray-400">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 border border-gray-700 flex items-center justify-center hover:border-primary hover:text-primary transition text-gray-400">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Script Menu Mobile -->
+    <!-- Scripts -->
     <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
 
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
+        });
+
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-md', 'shadow-primary/10');
+            } else {
+                navbar.classList.remove('shadow-md', 'shadow-primary/10');
+            }
         });
     </script>
 </body>
